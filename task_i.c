@@ -34,15 +34,6 @@ int main(void) {
     fclose(fptr);
     fptr = NULL;
 
-    double Vin[N];
-    double Vout[N];
-    double Current[N];
-    for(int i = 0; i < N; i++){
-        Vin[i] = data[i][0];
-        Vout[i] = data[i][1];
-        Current[i] = data[i][2];
-    }
-
     //insertion sort 
     //for element in array, is the element before it bigger?
     //yes - swap them, check again
@@ -51,48 +42,25 @@ int main(void) {
 
     double temp; //to swap 2 elements in an array, a temporary variable needs to hold one of them
     int j; //this will start at the location of each element, then work backwards, comparing each element
-    for(int i = 1; i < N; i++){
+    for(int c = 0; c < M; c++){
+        for(int i = 1; i < N; i++){
         j = i;
         for(; j > 0; j--){ //working backwards
-            if(Vin[j] <= Vin[j-1]){
-                temp = Vin[j-1];
-                Vin[j-1] = Vin[j];
-                Vin[j] = temp;
+            if(data[j][c] <= data[j-1][c]){
+                temp = data[j-1][c];
+                data[j-1][c] = data[j][c];
+                data[j][c] = temp;
             }
             else{
                 break;
             }
         }
     }
-    for(int i = 1; i < N; i++){
-        j = i;
-        for(; j > 0; j--){
-            if(Vout[j] <= Vout[j-1]){
-                temp = Vout[j-1];
-                Vout[j-1] = Vout[j];
-                Vout[j] = temp;
-            }
-            else{
-                break;
-            }
-        }
     }
-    for(int i = 1; i < N; i++){
-        j = i;
-        for(; j > 0; j--){
-            if(Current[j] <= Current[j-1]){
-                temp = Current[j-1];
-                Current[j-1] = Current[j];
-                Current[j] = temp;
-            }
-            else{
-                break;
-            }
-        }
-    }
-    printf("%.2f,", Vin[100]);
-    printf("%.2f,", Vout[100]);
-    printf("%.2f", Current[100]);
+    
+    printf("%.2f,", data[100][0]);
+    printf("%.2f,", data[100][1]);
+    printf("%.2f", data[100][2]);
 
     return EXIT_SUCCESS;
 }
