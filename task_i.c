@@ -90,9 +90,9 @@ int main(void) {
             }
         }
     }
-    printf("%.2f,", Vin[101]);
-    printf("%.2f,", Vout[101]);
-    printf("%.2f", Current[101]);
+    printf("%.2f,", Vin[100]);
+    printf("%.2f,", Vout[100]);
+    printf("%.2f", Current[100]);
 
     return EXIT_SUCCESS;
 }
