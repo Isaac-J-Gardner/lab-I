@@ -34,20 +34,64 @@ int main(void) {
     fclose(fptr);
     fptr = NULL;
 
-    double total;
-    for(int c = 0; c < M; c++){
-        total = 0;
-        for(int r = 0; r < N; r++){
-            total += data[r][c];
-        }
-        if(c<2){
-            printf("%.2f,", (total/N));
-        }
-        else{
-            printf("%.2f", (total/N));
-        }
+    double Vin[N];
+    double Vout[N];
+    double Current[N];
+    for(int i = 0; i < N; i++){
+        Vin[i] = data[i][0];
+        Vout[i] = data[i][1];
+        Current[i] = data[i][2];
     }
 
+    //insertion sort 
+    //for element in array, is the element before it bigger?
+    //yes - swap them, check again
+    //no - its in the correct spot, move to next element
+
+    double temp; //to swap 2 elements in an array, a temporary variable needs to hold one of them
+    int j; //this will start at the location of each element, then work backwards, comparing each element
+    for(int i = 1; i < N; i++){
+        j = i;
+        for(; j > 0; j--){ //working backwards
+            if(Vin[j] < Vin[j-1]){
+                temp = Vin[j-1];
+                Vin[j-1] = Vin[j];
+                Vin[j] = temp;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    for(int i = 1; i < N; i++){
+        j = i;
+        for(; j > 0; j--){
+            if(Vout[j] < Vout[j-1]){
+                temp = Vout[j-1];
+                Vout[j-1] = Vout[j];
+                Vout[j] = temp;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    for(int i = 1; i < N; i++){
+        j = i;
+        for(; j > 0; j--){
+            if(Current[j] < Current[j-1]){
+                temp = Current[j-1];
+                Current[j-1] = Current[j];
+                Current[j] = temp;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    printf("%.2f,", Vin[101]);
+    printf("%.2f,", Vout[101]);
+    printf("%.2f", Current[101]);
 
     return EXIT_SUCCESS;
 }
