@@ -47,13 +47,14 @@ int main(void) {
     //for element in array, is the element before it bigger?
     //yes - swap them, check again
     //no - its in the correct spot, move to next element
+    //if they're equal, swap them anyway and they will sit next to each other after.
 
     double temp; //to swap 2 elements in an array, a temporary variable needs to hold one of them
     int j; //this will start at the location of each element, then work backwards, comparing each element
     for(int i = 1; i < N; i++){
         j = i;
         for(; j > 0; j--){ //working backwards
-            if(Vin[j] < Vin[j-1]){
+            if(Vin[j] <= Vin[j-1]){
                 temp = Vin[j-1];
                 Vin[j-1] = Vin[j];
                 Vin[j] = temp;
@@ -66,7 +67,7 @@ int main(void) {
     for(int i = 1; i < N; i++){
         j = i;
         for(; j > 0; j--){
-            if(Vout[j] < Vout[j-1]){
+            if(Vout[j] <= Vout[j-1]){
                 temp = Vout[j-1];
                 Vout[j-1] = Vout[j];
                 Vout[j] = temp;
@@ -79,7 +80,7 @@ int main(void) {
     for(int i = 1; i < N; i++){
         j = i;
         for(; j > 0; j--){
-            if(Current[j] < Current[j-1]){
+            if(Current[j] <= Current[j-1]){
                 temp = Current[j-1];
                 Current[j-1] = Current[j];
                 Current[j] = temp;
